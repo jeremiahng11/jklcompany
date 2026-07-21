@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JKL Entertainment - Premier Talent Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 100px 0 80px;
+            text-align: center;
+            background: linear-gradient(180deg, #1a1a1a 0%, #000 100%);
+            border-bottom: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+            animation: sweep 8s infinite;
+        }
+
+        @keyframes sweep {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        h1 {
+            font-size: 4.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            position: relative;
+            background: linear-gradient(135deg, #fff 0%, #666 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 1.2em;
+            color: #999;
+            margin-top: 15px;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: #000;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #fff;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: #111;
+            border: 2px solid #222;
+            border-radius: 0;
+            padding: 50px 30px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+        }
+
+        .service-card:hover::before {
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            border-color: #fff;
+            transform: translateY(-5px);
+        }
+
+        .service-card:hover .service-icon,
+        .service-card:hover .service-title {
+            color: #000;
+        }
+
+        .service-icon {
+            font-size: 3.5em;
+            margin-bottom: 25px;
+            display: block;
+            position: relative;
+            z-index: 2;
+            transition: all 0.4s ease;
+        }
+
+        .service-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+            transition: all 0.4s ease;
+        }
+
+        /* Talents Section */
+        .talents {
+            padding: 100px 0;
+            background: #0a0a0a;
+        }
+
+        .talents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
+        }
+
+        .talent-card {
+            background: #000;
+            border: 2px solid #222;
+            border-radius: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .talent-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #fff;
+            opacity: 0;
+            transition: all 0.4s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .talent-card:hover::before {
+            opacity: 1;
+            top: -10px;
+            left: -10px;
+        }
+
+        .talent-card:hover {
+            transform: translate(10px, 10px);
+        }
+
+        .talent-image {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6em;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid #222;
+        }
+
+        .talent-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .talent-card:hover .talent-image::after {
+            left: 100%;
+        }
+
+        .talent-info {
+            padding: 40px 30px;
+            background: #000;
+        }
+
+        .talent-name {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .talent-specialty {
+            font-size: 1em;
+            color: #888;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        .talent-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            transition: all 0.3s ease;
+            flex: 1;
+            text-align: center;
+            min-width: 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn:hover {
+            color: #000;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #000;
+        }
+
+        .btn-primary::before {
+            background: #000;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+            color: #fff;
+            border-color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0 50px;
+            text-align: center;
+            background: #000;
+            border-top: 1px solid #222;
+        }
+
+        .footer-content h3 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .footer-content p {
+            color: #888;
+            font-size: 1.1em;
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.95em;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-info p {
+            margin: 8px 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card, .talent-card {
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
+
+        .talent-card:nth-child(1) { animation-delay: 0.2s; }
+        .talent-card:nth-child(2) { animation-delay: 0.4s; }
+        .talent-card:nth-child(3) { animation-delay: 0.6s; }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 20px;
+            }
+
+            .talents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .talent-card:hover {
+                transform: translate(5px, 5px);
+            }
+
+            .talent-card::before {
+                top: -5px;
+                left: -5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>JKL ENTERTAINMENT</h1>
+            <p class="tagline">PREMIER TALENT MANAGEMENT & ENTERTAINMENT SOLUTIONS</p>
+        </div>
+    </header>
+
+
+    <section class="talents">
+        <div class="container">
+            <h2 class="section-title">Featured Talents</h2>
+            <div class="talents-grid">
+                <div class="talent-card">
+                    <div class="talent-image"><img src="komei.png"></img></div>
+                    <div class="talent-info">
+                        <h4 class="talent-name">Komei Foong</h4>
+                        <p class="talent-specialty">Actress, Veteran Singer, Emcee & Livestream Host</p>
+                        <div class="talent-links">
+                            <a href="profile.html" class="btn btn-primary">Profile</a>
+                            <a href="digital_komei.html" class="btn">Contact</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="talent-card">
+                    <div class="talent-image"><img src="henry.jpeg"></img></div>
+                    <div class="talent-info">
+                        <h3 class="talent-name">Henry Thia</h3>
+                        <p class="talent-specialty">Veteran Actor & Content Creator</p>
+                        <div class="talent-links">
+                            <a href="#" class="btn btn-primary">Profile</a>
+                            <a href="#" class="btn">Contact</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="talent-card">
+                    <div class="talent-image">🎶</div>
+                    <div class="talent-info">
+                        <h3 class="talent-name">OLIVIA TORRES</h3>
+                        <p class="talent-specialty">Singer & Performer</p>
+                        <div class="talent-links">
+                            <a href="#" class="btn btn-primary">Profile</a>
+                            <a href="#" class="btn">Contact</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+        <section class="services">
+            <div class="container">
+                <h2 class="section-title">Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <span class="service-icon">🎤</span>
+                        <h3 class="service-title">Emcee</h3>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">📹</span>
+                        <h3 class="service-title">Livestreaming</h3>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">🎬</span>
+                        <h3 class="service-title">Acting</h3>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">🎵</span>
+                        <h3 class="service-title">Singing</h3>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">⭐</span>
+                        <h3 class="service-title">Celebrity Contents</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>READY TO WORK WITH US?</h3>
+                <p style="margin-top: 15px;">Elevate your event with our exceptional talents</p>
+            </div>
+            <div class="contact-info">
+                <p>📧 info@jklentertainment.com | 📱 +65  82005226</p>
+                <p style="margin-top: 15px;">© 2025 JKL Entertainment. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Komei Foong - Profile</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background-color: #121212; /* Dark background */
+  color: #f0f0f0; /* Light text for contrast */
+  line-height: 1.6;
+}
+
+/* Header styling */
+.header {
+  background-color: #1f1f1f;
+  color: #f0f0f0;
+  padding: 50px 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2.5em;
+  letter-spacing: 2px;
+}
+
+.header p {
+  margin-top: 10px;
+  font-size: 1.2em;
+  color: #bbb;
+}
+
+/* Profile image styling */
+.profile-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #f0f0f0;
+  margin: -40px auto 20px auto;
+  display: block;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  transition: transform 0.3s;
+}
+.profile-img:hover {
+  transform: scale(1.05);
+}
+
+/* Sections styling */
+.section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  background-color: #1f1f1f;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Heading styles */
+.section h2 {
+  color: #00c8a0;
+  border-bottom: 2px solid #00c8a0;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 1.8em;
+  letter-spacing: 1px;
+}
+
+/* Content styles */
+.content {
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+/* Contact styles */
+.contact-info {
+  margin-top: 20px;
+  background-color: #2a2a2a;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.contact-item {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+/* Carousel styles */
+.carousel-container {
+  position: relative;
+  max-width: 800px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  background-color: #222;
+}
+
+.carousel-images {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-img {
+  min-width: 100%;
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Navigation arrows */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255,255,255,0.2);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.5em;
+  color: #fff;
+  border-radius: 50%;
+  z-index: 10;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(255,255,255,0.4);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+/* Responsive adjustments */
+@media(max-width: 600px) {
+  .header h1 {
+    font-size: 2em;
+  }
+  .profile-img {
+    width: 150px;
+    height: 150px;
+  }
+  .section h2 {
+  font-size: 1.5em;
+}
+}
+
+/* Additional styling */
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+<h1>Komei Foong</h1>
+<p>Multi-talented Singer, Actress, and Emcee</p>
+</div>
+
+<!-- Profile Image -->
+<img src="komei.png" alt="Komei Foong" class="profile-img" />
+
+<!-- About Section -->
+<div class="section" id="about">
+<h2>About Komei Foong</h2>
+<div class="content">
+  <p>Komei Foong began her journey in the world of music at the tender age of 7, captivating audiences on the vibrant getai stage—a traditional form of entertainment during the Hungry Ghost Festival in Malaysia and Singapore. Her early debut showcased her natural talent and passion for singing, which would become a defining aspect of her life.</p>
+</div>
+</div>
+
+<!-- Musical Style -->
+<div class="section" id="music-style">
+<h2>Musical Style</h2>
+<div class="content">
+  <p>Komei is renowned for her sweet and melodic voice, often drawing comparisons to the legendary Teresa Teng—a beloved icon known for her romantic ballads that have transcended generations. Komei’s vocal prowess, combined with her emotional delivery, has earned her a special place in the hearts of fans across the region.</p>
+</div>
+</div>
+
+<!-- Emcee Experience -->
+<div class="section" id="emcee">
+<h2>Emcee Experience</h2>
+<div class="content">
+  <p>With over a decade of experience as a master of ceremonies (MC), Komei has hosted numerous high-profile events. Her engaging personality and professionalism have made her a sought-after Emcee for private functions, government events, and charity gatherings, where she brings her unique charm and flair to every occasion.</p>
+</div>
+</div>
+
+<!-- Livestreams & Live Selling -->
+<div class="section" id="livestreams">
+<h2>Livestreams & Live Selling</h2>
+<div class="content">
+  <p>Komei's online livestreaming journey began during the early days of COVID-19. She has worked with various businesses, introducing and selling products alongside co-host celebrities on platforms such as Facebook and TikTok. Her engaging presence helps boost brand exposure and sales.</p>
+</div>
+</div>
+
+<!-- Acting Experience -->
+<div class="section" id="acting">
+<h2>Acting Experience</h2>
+<div class="content">
+  <p>With a decade of on-set experience at MediaCorp, Komei has played small roles in Jack Neo’s comedy TV series and movies, as well as numerous commercials with major brands. She was a main cast member in the highly anticipated 2025 CNY movie <em>"I Want to Be Boss"</em> directed by Jack Neo, and she will feature in the 2026 movie by Eric Wong, showcasing her acting and musical talents in Singapore.</p>
+</div>
+</div>
+
+<!-- Sponsored Content -->
+<div class="section" id="sponsored">
+<h2>Sponsored Content</h2>
+<div class="content">
+  <p>Komei offers quality content creation featuring herself, providing sponsors with impressive reach and exposure through her social media channels. She has long-standing partnerships with brands in postpartum health, Malay massages, beauty slimming packages, and more, engaging her dedicated fan base with authentic content.</p>
+</div>
+</div>
+
+<!-- Continuing the Passion -->
+<div class="section" id="more-info">
+<h2>Continuing the Passion</h2>
+<div class="content">
+  <p>Komei Foong continues to inspire many with her dedication to her craft. As a talented singer, actress, and emcee, she remains a beloved figure in the entertainment scenes of Malaysia and Singapore, constantly evolving and connecting with her audience through her versatile talents.</p>
+</div>
+</div>
+
+<!-- Showcase Carousel of 12 Images -->
+<div class="section" id="work-showcase">
+<h2>Portfolio</h2>
+<div class="carousel-container">
+  <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+  <div class="carousel-wrapper">
+    <div class="carousel-images" id="carousel-images">
+      <!-- Replace src with actual images -->
+      <img class="carousel-img" src="https://via.placeholder.com/500x300?text=Image+1" alt="Work 1" />
+      <img class="carousel-img" src="https://via.placeholder.com/500x300?text=Image+2" alt="Work 2" />
+      <img class="carousel-img" src="https://via.placeholder.com/500x300?text=Image+3" alt="Work 3" />
+      <img class="carousel-img" src="https://via.placeholder.com/500x300?text=Image+4" alt="Work 4" />
+      <img class="carousel-img" src="https://via.placeholder.com/500x300?text=Image+5" alt="Work 5" />
+      <img class="carousel-img" src="https://via.placeholder.com/900x600?text=Image+6" alt="Work 6" />
+      <img class="carousel-img" src="https://via.placeholder.com/900x600?text=Image+7" alt="Work 7" />
+      <img class="carousel-img" src="https://via.placeholder.com/900x600?text=Image+8" alt="Work 8" />
+      <img class="carousel-img" src="https://via.placeholder.com/900x600?text=Image+9" alt="Work 9" />
+      <img class="carousel-img" src="https://via.placeholder.com/900x600?text=Image+10" alt="Work 10" />
+      <img class="carousel-img" src="https://via.placeholder.com/900x600?text=Image+11" alt="Work 11" />
+      <img class="carousel-img" src="https://via.placeholder.com/900x600?text=Image+12" alt="Work 12" />
+    </div>
+  </div>
+  <button class="next" onclick="moveSlide(1)">&#10095;</button>
+</div>
+</div>
+
+<!-- Contact & Social Media -->
+<div class="section" id="contact">
+  <h2>Contact & Social Media</h2>
+  <div class="content contact-info">
+    <div class="contact-item"><strong>Follow IG:</strong> @imkomei</div>
+    <div class="contact-item"><strong>Manager:</strong> Jeremiah Ng</div>
+    <div class="contact-item"><strong>Mobile:</strong> +65 8200 5226</div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+<p>&copy; 2025 Komei Foong. All Rights Reserved.</p>
+</div>
+
+<!-- JavaScript for Carousel -->
+<script>
+let currentIndex = 0;
+const images = document.getElementById('carousel-images');
+const totalImages = images.children.length;
+
+function showSlide(index) {
+  if (index >= totalImages) {
+    currentIndex = 0;
+  } else if (index < 0) {
+    currentIndex = totalImages - 1;
+  } else {
+    currentIndex = index;
+  }
+  images.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+
+function moveSlide(direction) {
+  showSlide(currentIndex + direction);
+}
+
+// Optional: Auto slide every few seconds
+// setInterval(() => { moveSlide(1); }, 5000);
+</script>
+
+</body>
+</html>

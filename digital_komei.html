@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JKL Entertainment - Komei Foong</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #FF1493 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 400px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #FF1493 0%, #FF69B4 50%, #FFB6C1 100%);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .photo-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            border: 4px solid white;
+            overflow: hidden;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+            font-size: 48px;
+            color: #999;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .name {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .name-chinese {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+
+        .persona {
+            font-size: 14px;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .company {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .company-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #FF1493;
+            margin-bottom: 5px;
+        }
+
+        .business-nature {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .services-section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .service-tag {
+            background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 2px 8px rgba(255, 20, 147, 0.2);
+            transition: all 0.3s;
+        }
+
+        .service-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 20, 147, 0.3);
+        }
+
+        .contact-info {
+            margin-bottom: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+            cursor: pointer;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 18px;
+        }
+
+        .contact-text {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 2px;
+        }
+
+        .contact-value {
+            font-size: 15px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .qr-section {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .qr-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        #qrcode {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        #qrcode canvas, #qrcode img {
+            border-radius: 10px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #FF1493;
+            border: 2px solid #FF1493;
+        }
+
+        .btn-secondary:hover {
+            background: #FF1493;
+            color: white;
+        }
+
+        @media (max-width: 480px) {
+            .card-container {
+                max-width: 100%;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card-header">
+            <div class="photo-container">
+                <div class="photo-placeholder"><img src="komei.png" alt="Komei Foong" class="profile-photo"></div>
+            </div>
+            <div class="name">Komei Foong</div>
+            <div class="name-chinese">冯高美</div>
+            <div class="persona">Actress, Singer & Emcee</div>
+        </div>
+
+        <div class="card-body">
+            <div class="company">
+                <div class="company-name">JKL Entertainment</div>
+                <div class="business-nature">Talent Management</div>
+            </div>
+
+            <div class="services-section">
+                <div class="section-title">Services</div>
+                <div class="services-grid">
+                    <div class="service-tag">🎤 Emcee</div>
+                    <div class="service-tag">📹 Livestreaming</div>
+                    <div class="service-tag">🎬 Acting</div>
+                    <div class="service-tag">🎵 Singing</div>
+                    <div class="service-tag">⭐ Celebrity Contents</div>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-text">
+                        <div class="contact-label">Talent Manager: Jeremiah Ng</div>
+                        <div class="contact-value">+65 82005226</div>
+                    </div>
+                </div>
+                <div class="contact-item" onclick="window.open('https://instagram.com/imkomei', '_blank')">
+                    <div class="contact-icon">📷</div>
+                    <div class="contact-text">
+                        <div class="contact-label">Instagram</div>
+                        <div class="contact-value">@imkomei</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="qr-section">
+                <div class="qr-title">Scan to Save Contact</div>
+                <div id="qrcode">
+                    <img src="komeiqr.png"
+                         alt="QR Code"
+                         style="width: 180px; height: 180px; display: block; margin: 0 auto;">
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button class="btn btn-primary" onclick="saveContact()">
+                    💾 Save Contact
+                </button>
+                <button class="btn btn-secondary" onclick="shareCard()">
+                    📤 Share
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Generate vCard data
+        const vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Komei Foong (冯高美)
+N:Foong;Komei;;;
+ORG:JKL Entertainment
+TITLE:Actress, Singer & Emcee
+TEL;TYPE=CELL:+6582005226
+URL:https://instagram.com/imkomei
+NOTE:Manager Jeremiah Ng
+END:VCARD`;
+
+
+        // Save contact function
+        function saveContact() {
+            const blob = new Blob([vCardData], { type: 'text/vcard' });
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Komei_Foong_JKL_Entertainment.vcf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+        }
+
+        // Share function
+        async function shareCard() {
+            const shareData = {
+                title: 'Komei Foong - JKL Entertainment',
+                text: 'Komei Foong (冯高美)\nActress, Singer & Emcee\nJKL Entertainment\nMobile: +65 87781012\nInstagram: @imkomei',
+                url: window.location.href
+            };
+
+            try {
+                if (navigator.share) {
+                    await navigator.share(shareData);
+                } else {
+                    // Fallback: copy to clipboard
+                    await navigator.clipboard.writeText(shareData.text);
+                    alert('Contact details copied to clipboard!');
+                }
+            } catch (err) {
+                console.log('Error sharing:', err);
+            }
+        }
+    </script>
+</body>
+</html>
