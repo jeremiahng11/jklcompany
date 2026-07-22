@@ -48,7 +48,7 @@ None — the site is fully static.
 ## Notes
 
 - `logo.png` is currently the engineering-studio mark and shows an "R". Drop in a JKL logo at the same path to rebrand fully.
-- Contacts: Tech → `jeremiah@rudratech.sg` · Talent → `info@jklentertainment.com`, +65 8200 5226.
+- Contacts: Tech → `jeremiah@jkl.company` · Talent → `info@jklentertainment.com`, +65 8200 5226.
 - The talent profile carousel uses the profile photo as a single placeholder slide until real portfolio images are added (see the `TODO` in `profile.html`).
 
 ## License
