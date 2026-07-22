@@ -1,499 +1,686 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JKL Entertainment - Premier Talent Management</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JKL Global LLP — Tech &amp; Talent</title>
+<meta name="description" content="JKL Global LLP is a Singapore firm built on two disciplines — a software engineering practice shipping production-grade web, mobile & AI products, and a talent-management roster for acting, singing, emcee and livestream work.">
+<meta name="theme-color" content="#070809">
+<link rel="canonical" href="https://jkl.company/">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JKL Global LLP">
+<meta property="og:title" content="JKL Global LLP — Tech &amp; Talent">
+<meta property="og:description" content="Two disciplines, one standard. Production-grade software engineering and premier talent management — under one Singapore firm.">
+<meta property="og:url" content="https://jkl.company/">
+<meta property="og:image" content="https://jkl.company/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JKL Global LLP — Tech &amp; Talent">
+<meta name="twitter:description" content="Production-grade software engineering and premier talent management, under one Singapore firm.">
+<meta name="twitter:image" content="https://jkl.company/og-image.png">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#070809;
+    --bg-2:#0c0d10;
+    --panel:#101216;
+    --panel-2:#15171c;
+    --line:rgba(255,255,255,.08);
+    --line-2:rgba(255,255,255,.14);
+    --ink:#eef0f2;
+    --muted:#9aa0a8;
+    --faint:#5b6068;
+    --metal-1:#e9edf2;
+    --metal-2:#aeb4bc;
+    --metal-3:#6c7178;
+    --accent:#c8ccd2;
+    --glow:rgba(200,206,214,.16);
+    /* talent accent — warm rose, only surfaces on the Talent arm */
+    --talent-1:#ff6fae;
+    --talent-2:#ff9ac6;
+    --talent-glow:rgba(255,111,174,.18);
+    --display:'Bricolage Grotesque',system-ui,sans-serif;
+    --body:'IBM Plex Sans',system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --r:14px;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--body);
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    position:relative;
+  }
+  /* atmosphere — shifts hue with the active arm */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-2;transition:background .6s ease;
+    background:
+      radial-gradient(900px 500px at 78% -10%, rgba(120,128,138,.10), transparent 60%),
+      radial-gradient(700px 500px at 5% 100%, rgba(90,96,104,.08), transparent 55%),
+      var(--bg);
+  }
+  body[data-arm="talent"]::before{
+    background:
+      radial-gradient(900px 500px at 78% -10%, rgba(255,111,174,.10), transparent 60%),
+      radial-gradient(700px 500px at 5% 100%, rgba(255,111,174,.06), transparent 55%),
+      var(--bg);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+  }
+  .circuit{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;transition:opacity .5s}
+  body[data-arm="talent"] .circuit{opacity:.14}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #000;
-            color: #fff;
-            overflow-x: hidden;
-        }
+  /* ---- type ---- */
+  .kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--faint)}
+  h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.02;letter-spacing:-.02em}
+  .metal{
+    background:linear-gradient(180deg,var(--metal-1),var(--metal-2) 48%,var(--metal-3));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .rose{
+    background:linear-gradient(180deg,#ffd0e6,var(--talent-1) 55%,#c94f86);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+  /* ---- nav ---- */
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
+    background:linear-gradient(180deg,rgba(7,8,9,.86),rgba(7,8,9,.55));
+    border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:var(--maxw);margin:0 auto;padding:0 28px;gap:18px}
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:700;letter-spacing:-.01em;flex:none}
+  .brand img{width:34px;height:34px;filter:drop-shadow(0 0 10px var(--glow))}
+  .brand b{font-size:16px}
+  .brand span{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--faint);text-transform:uppercase;display:block;margin-top:-2px}
+  .navlinks{display:flex;gap:26px;align-items:center;margin-left:auto}
+  .navlinks a{font-size:13.5px;color:var(--muted);transition:color .2s}
+  .navlinks a:hover{color:var(--ink)}
+  .btn{font-family:var(--mono);font-size:12px;letter-spacing:.06em;border:1px solid var(--line-2);
+    padding:9px 16px;border-radius:999px;color:var(--ink);transition:.25s;background:rgba(255,255,255,.02);cursor:pointer}
+  .btn:hover{background:var(--ink);color:#000;border-color:var(--ink)}
+  .menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:7px 10px;font-family:var(--mono);cursor:pointer}
 
-        /* Header */
-        header {
-            padding: 100px 0 80px;
-            text-align: center;
-            background: linear-gradient(180deg, #1a1a1a 0%, #000 100%);
-            border-bottom: 1px solid #333;
-            position: relative;
-            overflow: hidden;
-        }
+  /* ---- arm toggle (the 2 T's) ---- */
+  .toggle{display:inline-flex;padding:5px;gap:4px;border:1px solid var(--line-2);border-radius:999px;
+    background:rgba(255,255,255,.03);position:relative}
+  .toggle button{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+    border:none;background:transparent;color:var(--muted);padding:8px 18px;border-radius:999px;cursor:pointer;
+    transition:color .3s;position:relative;z-index:2;display:flex;align-items:center;gap:7px}
+  .toggle button .d{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.6}
+  .toggle .thumb{position:absolute;top:5px;bottom:5px;left:5px;width:calc(50% - 5px);border-radius:999px;z-index:1;
+    background:linear-gradient(180deg,#f2f4f6,#bfc4cb);transition:transform .35s cubic-bezier(.2,.7,.2,1),background .35s}
+  body[data-arm="talent"] .toggle .thumb{transform:translateX(100%);
+    background:linear-gradient(180deg,var(--talent-2),var(--talent-1))}
+  body[data-arm="tech"] .toggle button[data-go="tech"]{color:#0a0a0b}
+  body[data-arm="talent"] .toggle button[data-go="talent"]{color:#0a0a0b}
+  .nav-toggle{margin:0 auto}
 
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -50%;
-            width: 200%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
-            animation: sweep 8s infinite;
-        }
+  /* ---- hero ---- */
+  .hero{position:relative;padding:104px 0 64px;overflow:hidden}
+  .hero-logo{position:absolute;right:-90px;top:30px;width:520px;max-width:58vw;opacity:.09;
+    filter:drop-shadow(0 0 60px var(--glow));pointer-events:none;animation:float 12s ease-in-out infinite}
+  @keyframes float{50%{transform:translateY(-14px)}}
+  .hero h1{font-size:clamp(40px,7vw,82px);font-weight:800;max-width:15ch}
+  .hero p.lead{margin-top:24px;font-size:clamp(16px,2vw,19px);color:var(--muted);max-width:56ch}
+  .hero .cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn-lg{padding:14px 24px;font-size:13px}
+  .btn-solid{background:linear-gradient(180deg,#f2f4f6,#bfc4cb);color:#0a0a0b;border:none;font-weight:600}
+  .btn-solid:hover{filter:brightness(1.08);background:linear-gradient(180deg,#f2f4f6,#bfc4cb);color:#0a0a0b}
+  body[data-arm="talent"] .btn-solid{background:linear-gradient(180deg,var(--talent-2),var(--talent-1));color:#2a0f1c}
+  .hero .kicker{margin-bottom:20px;display:inline-flex;align-items:center;gap:10px}
+  .hero .kicker::before{content:"";width:34px;height:1px;background:var(--metal-2)}
+  body[data-arm="talent"] .hero .kicker::before{background:var(--talent-1)}
+  .hero-toggle{margin:30px 0 4px}
 
-        @keyframes sweep {
-            0%, 100% { transform: translateX(-100%); }
-            50% { transform: translateX(100%); }
-        }
+  /* smooth arm swap */
+  .arm{display:none}
+  .arm.on{display:block;animation:armin .5s cubic-bezier(.2,.7,.2,1)}
+  /* stats wrappers must be layout-transparent so children join the grid */
+  .stats .arm.on{display:contents;animation:none}
+  @keyframes armin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .hero .l{display:block}
 
-        h1 {
-            font-size: 4.5em;
-            margin-bottom: 10px;
-            font-weight: 700;
-            letter-spacing: -2px;
-            position: relative;
-            background: linear-gradient(135deg, #fff 0%, #666 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+  /* ---- stats strip ---- */
+  .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:56px}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat{padding:30px 24px;border-left:1px solid var(--line)}
+  .stat:first-child{border-left:none}
+  .stat b{font-family:var(--display);font-size:30px;font-weight:700;display:block}
+  .stat small{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
 
-        .tagline {
-            font-size: 1.2em;
-            color: #999;
-            margin-top: 15px;
-            letter-spacing: 1px;
-            position: relative;
-        }
+  /* ---- sections ---- */
+  section.block{padding:92px 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:44px;flex-wrap:wrap}
+  .sec-head h2{font-size:clamp(28px,4.4vw,46px)}
+  .sec-head p{color:var(--muted);max-width:46ch;font-size:15px}
 
-        /* Services Section */
-        .services {
-            padding: 100px 0;
-            background: #000;
-        }
+  /* ---- filters ---- */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+  .filters button{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+    background:transparent;color:var(--muted);border:1px solid var(--line);padding:8px 15px;border-radius:999px;cursor:pointer;transition:.2s}
+  .filters button:hover{border-color:var(--line-2);color:var(--ink)}
+  .filters button.on{background:var(--ink);color:#000;border-color:var(--ink)}
 
-        .section-title {
-            text-align: center;
-            font-size: 2.8em;
-            margin-bottom: 60px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+  /* ---- project grid ---- */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{position:relative;background:linear-gradient(180deg,var(--panel),var(--bg-2));
+    border:1px solid var(--line);border-radius:var(--r);padding:24px;overflow:hidden;
+    transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .35s}
+  .card::before{content:"";position:absolute;inset:0;border-radius:var(--r);padding:1px;
+    background:linear-gradient(140deg,rgba(232,237,242,.0),rgba(232,237,242,.22),rgba(232,237,242,0));
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s}
+  .card:hover{transform:translateY(-6px);border-color:transparent;box-shadow:0 24px 50px -24px rgba(0,0,0,.8)}
+  .card:hover::before{opacity:1}
+  .card .num{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.1em}
+  .card .cat{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    color:#0a0a0b;background:linear-gradient(180deg,#e9edf2,#b3b8bf);padding:4px 9px;border-radius:6px;float:right}
+  .card h3{font-size:23px;margin:16px 0 10px}
+  .card p{font-size:14px;color:var(--muted);min-height:62px}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+  .chip{font-family:var(--mono);font-size:10.5px;color:var(--metal-2);background:rgba(255,255,255,.04);
+    border:1px solid var(--line);padding:3px 9px;border-radius:6px}
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: #fff;
-        }
+  /* ---- about ---- */
+  .about-banner{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--line);
+    margin-bottom:40px;box-shadow:0 24px 60px -30px rgba(0,0,0,.85)}
+  .about{display:grid;grid-template-columns:1.3fr .85fr;gap:48px;align-items:start}
+  .about .bio p{color:var(--muted);font-size:16px;margin-bottom:18px}
+  .about .bio p strong{color:var(--ink);font-weight:600}
+  .rolecard{background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);border-radius:var(--r);padding:26px}
+  .rolecard h4{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
+  .role{display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+  .role:first-of-type{border-top:none}
+  .role b{font-family:var(--display);font-size:16px;font-weight:600}
+  .role span{display:block;font-size:13px;color:var(--muted)}
+  .role span a{color:var(--metal-2);text-decoration:none;border-bottom:1px solid var(--line-2)}
+  .role span a:hover{color:var(--ink)}
+  .role .dot{width:8px;height:8px;border-radius:50%;margin-top:8px;flex:none;
+    background:linear-gradient(180deg,#eef1f4,#9aa0a8);box-shadow:0 0 10px var(--glow)}
+  .tags-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+  .tags-row .chip{font-size:11px}
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
+  /* ---- team ---- */
+  .teamgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .tcard{background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);
+    border-radius:var(--r);padding:24px;display:flex;gap:16px;align-items:center;transition:.3s}
+  .tcard:hover{border-color:var(--line-2);transform:translateY(-4px)}
+  .avatar{width:54px;height:54px;border-radius:12px;flex:none;display:grid;place-items:center;
+    font-family:var(--display);font-weight:700;font-size:19px;color:#0a0a0b;
+    background:linear-gradient(145deg,#eef1f4,#aeb4bc 60%,#7b8087);box-shadow:0 0 16px var(--glow)}
+  .tcard b{font-family:var(--display);font-size:17px;font-weight:600;display:block}
+  .tcard small{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--metal-2);text-transform:uppercase}
+  .tcard em{font-style:normal;font-size:13px;color:var(--muted)}
 
-        .service-card {
-            background: #111;
-            border: 2px solid #222;
-            border-radius: 0;
-            padding: 50px 30px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
+  /* ---- talent roster ---- */
+  .roster{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .talent{position:relative;background:linear-gradient(180deg,var(--panel),var(--bg-2));
+    border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .35s}
+  .talent:hover{transform:translateY(-6px);border-color:var(--line-2);box-shadow:0 24px 50px -24px rgba(0,0,0,.8)}
+  .talent .photo{height:320px;background:linear-gradient(135deg,#16181d,#0b0c0f);display:flex;align-items:center;justify-content:center;
+    font-size:5.4em;overflow:hidden;position:relative;border-bottom:1px solid var(--line)}
+  .talent .photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .talent:hover .photo img{transform:scale(1.05)}
+  .talent .photo::after{content:"";position:absolute;inset:0 auto 0 -100%;width:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);transition:left .6s ease}
+  .talent:hover .photo::after{left:100%}
+  .talent .meta{padding:26px 24px}
+  .talent .meta h3{font-size:22px;margin-bottom:6px}
+  .talent .meta .role-line{font-size:13px;color:var(--muted);font-family:var(--mono);letter-spacing:.03em;min-height:38px}
+  .talent .links{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+  .talent .links a{flex:1;text-align:center;min-width:110px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;
+    text-transform:uppercase;padding:11px 12px;border-radius:999px;border:1px solid var(--line-2);color:var(--ink);transition:.25s}
+  .talent .links a:hover{background:var(--ink);color:#000;border-color:var(--ink)}
+  .talent .links a.solid{background:linear-gradient(180deg,var(--talent-2),var(--talent-1));color:#2a0f1c;border:none;font-weight:600}
+  .talent .links a.solid:hover{filter:brightness(1.06)}
+  .talent .links a.disabled{opacity:.4;pointer-events:none}
+  .talent .badge{position:absolute;top:16px;left:16px;z-index:2;font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+    text-transform:uppercase;padding:5px 11px;border-radius:999px;color:#2a0f1c;
+    background:linear-gradient(180deg,var(--talent-2),var(--talent-1));box-shadow:0 6px 18px var(--talent-glow)}
 
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #fff;
-            transform: translateY(100%);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1;
-        }
+  /* ---- services (talent) ---- */
+  .svcgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:8px}
+  .svc{background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);border-radius:var(--r);
+    padding:30px 22px;text-align:center;transition:.3s;position:relative;overflow:hidden}
+  .svc:hover{transform:translateY(-5px);border-color:var(--talent-2)}
+  .svc .ic{font-size:2.4em;display:block;margin-bottom:14px}
+  .svc b{font-family:var(--display);font-size:15px;font-weight:600;letter-spacing:.02em}
 
-        .service-card:hover::before {
-            transform: translateY(0);
-        }
+  /* ---- contact / cta ---- */
+  .cta-band{position:relative;border:1px solid var(--line);border-radius:20px;overflow:hidden;
+    background:linear-gradient(140deg,var(--panel-2),var(--bg-2));padding:64px 48px;text-align:center}
+  .cta-band img{position:absolute;right:-40px;bottom:-60px;width:320px;opacity:.08;pointer-events:none}
+  .cta-band h2{font-size:clamp(30px,5vw,52px);font-weight:800}
+  .cta-band p{color:var(--muted);margin:16px auto 30px;max-width:48ch}
+  .cta-band .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
-        .service-card:hover {
-            border-color: #fff;
-            transform: translateY(-5px);
-        }
+  footer{border-top:1px solid var(--line);padding:40px 0;margin-top:90px}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+  footer small{font-family:var(--mono);font-size:11.5px;color:var(--faint);letter-spacing:.04em;line-height:1.8}
+  footer .fl{display:flex;gap:22px}
+  footer .fl a{font-family:var(--mono);font-size:12px;color:var(--muted);cursor:pointer}
+  footer .fl a:hover{color:var(--ink)}
 
-        .service-card:hover .service-icon,
-        .service-card:hover .service-title {
-            color: #000;
-        }
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
 
-        .service-icon {
-            font-size: 3.5em;
-            margin-bottom: 25px;
-            display: block;
-            position: relative;
-            z-index: 2;
-            transition: all 0.4s ease;
-        }
-
-        .service-title {
-            font-size: 1.3em;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            position: relative;
-            z-index: 2;
-            transition: all 0.4s ease;
-        }
-
-        /* Talents Section */
-        .talents {
-            padding: 100px 0;
-            background: #0a0a0a;
-        }
-
-        .talents-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 50px;
-        }
-
-        .talent-card {
-            background: #000;
-            border: 2px solid #222;
-            border-radius: 0;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .talent-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 2px solid #fff;
-            opacity: 0;
-            transition: all 0.4s ease;
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .talent-card:hover::before {
-            opacity: 1;
-            top: -10px;
-            left: -10px;
-        }
-
-        .talent-card:hover {
-            transform: translate(10px, 10px);
-        }
-
-        .talent-image {
-            width: 100%;
-            height: 350px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 6em;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 2px solid #222;
-        }
-
-        .talent-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .talent-card:hover .talent-image::after {
-            left: 100%;
-        }
-
-        .talent-info {
-            padding: 40px 30px;
-            background: #000;
-        }
-
-        .talent-name {
-            font-size: 1.8em;
-            margin-bottom: 10px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .talent-specialty {
-            font-size: 1em;
-            color: #888;
-            margin-bottom: 25px;
-            letter-spacing: 0.5px;
-        }
-
-        .talent-links {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 30px;
-            background: transparent;
-            border: 2px solid #fff;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-size: 0.85em;
-            transition: all 0.3s ease;
-            flex: 1;
-            text-align: center;
-            min-width: 120px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: #fff;
-            transition: left 0.3s ease;
-            z-index: -1;
-        }
-
-        .btn:hover::before {
-            left: 0;
-        }
-
-        .btn:hover {
-            color: #000;
-        }
-
-        .btn-primary {
-            background: #fff;
-            color: #000;
-        }
-
-        .btn-primary::before {
-            background: #000;
-        }
-
-        .btn-primary:hover {
-            background: #000;
-            color: #fff;
-            border-color: #fff;
-        }
-
-        /* Footer */
-        footer {
-            padding: 80px 0 50px;
-            text-align: center;
-            background: #000;
-            border-top: 1px solid #222;
-        }
-
-        .footer-content h3 {
-            font-size: 2em;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-
-        .footer-content p {
-            color: #888;
-            font-size: 1.1em;
-        }
-
-        .contact-info {
-            margin-top: 40px;
-            color: #666;
-            font-size: 0.95em;
-            letter-spacing: 0.5px;
-        }
-
-        .contact-info p {
-            margin: 8px 0;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .service-card, .talent-card {
-            animation: fadeInUp 0.8s ease-out backwards;
-        }
-
-        .service-card:nth-child(1) { animation-delay: 0.1s; }
-        .service-card:nth-child(2) { animation-delay: 0.2s; }
-        .service-card:nth-child(3) { animation-delay: 0.3s; }
-        .service-card:nth-child(4) { animation-delay: 0.4s; }
-        .service-card:nth-child(5) { animation-delay: 0.5s; }
-
-        .talent-card:nth-child(1) { animation-delay: 0.2s; }
-        .talent-card:nth-child(2) { animation-delay: 0.4s; }
-        .talent-card:nth-child(3) { animation-delay: 0.6s; }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.8em;
-            }
-
-            .section-title {
-                font-size: 2em;
-            }
-
-            .services-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 20px;
-            }
-
-            .talents-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .talent-card:hover {
-                transform: translate(5px, 5px);
-            }
-
-            .talent-card::before {
-                top: -5px;
-                left: -5px;
-            }
-        }
-    </style>
+  @media(max-width:900px){
+    .grid,.teamgrid,.roster{grid-template-columns:repeat(2,1fr)}
+    .about{grid-template-columns:1fr;gap:32px}
+    .stats .wrap{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(3){border-left:none}
+  }
+  @media(max-width:640px){
+    .navlinks{display:none}
+    .menu-btn{display:none}
+    .brand span{display:none}
+    .grid,.teamgrid,.roster{grid-template-columns:1fr}
+    .stats .wrap{grid-template-columns:1fr 1fr}
+    .hero{padding:64px 0 44px}
+    .cta-band{padding:48px 22px}
+    section.block{padding:66px 0}
+    nav{gap:10px}
+    .nav-toggle{margin-left:auto;margin-right:0}
+    .toggle button{padding:8px 13px;font-size:11px}
+  }
+</style>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <h1>JKL ENTERTAINMENT</h1>
-            <p class="tagline">PREMIER TALENT MANAGEMENT & ENTERTAINMENT SOLUTIONS</p>
+<body data-arm="tech">
+<svg class="circuit" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <g stroke="rgba(170,176,184,.10)" stroke-width="1" fill="none">
+    <path d="M0 120 H360 V240 H520"/><circle cx="520" cy="240" r="3" fill="rgba(170,176,184,.18)"/>
+    <path d="M1440 200 H1100 V330 H980"/><circle cx="980" cy="330" r="3" fill="rgba(170,176,184,.18)"/>
+    <path d="M120 900 V640 H300 V520"/><circle cx="300" cy="520" r="3" fill="rgba(170,176,184,.18)"/>
+    <path d="M1320 900 V700 H1180 V600"/><circle cx="1180" cy="600" r="3" fill="rgba(170,176,184,.18)"/>
+    <path d="M0 760 H240 V600"/>
+  </g>
+</svg>
+
+<header>
+  <nav>
+    <a class="brand" href="#top">
+      <img src="logo.png" alt="JKL Global LLP logo">
+      <div><b>JKL GLOBAL LLP</b><span>Tech &amp; Talent · Singapore</span></div>
+    </a>
+
+    <!-- The 2 T's toggle lives in the nav so it's always reachable -->
+    <div class="toggle nav-toggle" role="tablist" aria-label="Choose division">
+      <span class="thumb" aria-hidden="true"></span>
+      <button data-go="tech" role="tab" aria-selected="true"><span class="d"></span>Tech</button>
+      <button data-go="talent" role="tab" aria-selected="false"><span class="d"></span>Talent</button>
+    </div>
+
+    <div class="navlinks">
+      <!-- Tech links -->
+      <a href="#work" class="arm-link arm-link--tech">Work</a>
+      <a href="#about" class="arm-link arm-link--tech">About</a>
+      <a href="#team" class="arm-link arm-link--tech">Team</a>
+      <!-- Talent links -->
+      <a href="#roster" class="arm-link arm-link--talent" style="display:none">Roster</a>
+      <a href="#services" class="arm-link arm-link--talent" style="display:none">Services</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- =================== HERO =================== -->
+  <section class="hero">
+    <img class="hero-logo" src="logo.png" alt="">
+    <div class="wrap">
+      <span class="kicker" id="hero-kicker">JKL Global LLP · Singapore</span>
+
+      <!-- TECH hero -->
+      <div class="arm arm--tech on" data-arm="tech">
+        <h1>
+          <span class="l">We build</span>
+          <span class="l metal">production-grade</span>
+          <span class="l">products &amp; AI.</span>
+        </h1>
+        <p class="lead">The engineering arm of JKL Global LLP — a Singapore studio shipping full-stack web, mobile and AI platforms across fintech, entertainment, e-commerce and lifestyle, from first commit to production.</p>
+        <div class="cta">
+          <a class="btn btn-lg btn-solid" href="#work">View the work</a>
+          <a class="btn btn-lg" href="#contact">Start a project</a>
         </div>
-    </header>
+      </div>
 
-
-    <section class="talents">
-        <div class="container">
-            <h2 class="section-title">Featured Talents</h2>
-            <div class="talents-grid">
-                <div class="talent-card">
-                    <div class="talent-image"><img src="komei.png"></img></div>
-                    <div class="talent-info">
-                        <h4 class="talent-name">Komei Foong</h4>
-                        <p class="talent-specialty">Actress, Veteran Singer, Emcee & Livestream Host</p>
-                        <div class="talent-links">
-                            <a href="profile.html" class="btn btn-primary">Profile</a>
-                            <a href="digital_komei.html" class="btn">Contact</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="talent-card">
-                    <div class="talent-image"><img src="henry.jpeg"></img></div>
-                    <div class="talent-info">
-                        <h3 class="talent-name">Henry Thia</h3>
-                        <p class="talent-specialty">Veteran Actor & Content Creator</p>
-                        <div class="talent-links">
-                            <a href="#" class="btn btn-primary">Profile</a>
-                            <a href="#" class="btn">Contact</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="talent-card">
-                    <div class="talent-image">🎶</div>
-                    <div class="talent-info">
-                        <h3 class="talent-name">OLIVIA TORRES</h3>
-                        <p class="talent-specialty">Singer & Performer</p>
-                        <div class="talent-links">
-                            <a href="#" class="btn btn-primary">Profile</a>
-                            <a href="#" class="btn">Contact</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <!-- TALENT hero -->
+      <div class="arm arm--talent" data-arm="talent">
+        <h1>
+          <span class="l">Premier</span>
+          <span class="l rose">talent management</span>
+          <span class="l">&amp; entertainment.</span>
+        </h1>
+        <p class="lead">The talent arm of JKL Global LLP — representing actors, singers, emcees and livestream hosts for events, brand campaigns and productions across Singapore and Malaysia.</p>
+        <div class="cta">
+          <a class="btn btn-lg btn-solid" href="#roster">Meet the talents</a>
+          <a class="btn btn-lg" href="#contact">Book talent</a>
         </div>
+      </div>
+
+      <p class="kicker" style="margin-top:34px;margin-bottom:10px">Two disciplines · one standard</p>
+      <div class="toggle hero-toggle" aria-hidden="true">
+        <span class="thumb"></span>
+        <button data-go="tech"><span class="d"></span>Tech</button>
+        <button data-go="talent"><span class="d"></span>Talent</button>
+      </div>
+    </div>
+
+    <!-- stats: swap per arm -->
+    <div class="stats">
+      <div class="wrap">
+        <!-- tech stats -->
+        <div class="arm arm--tech on" data-arm="tech">
+          <div class="stat"><b class="metal">15+</b><small>Products shipped</small></div>
+          <div class="stat"><b class="metal">15+</b><small>Years building</small></div>
+          <div class="stat"><b class="metal">Full-stack</b><small>+ Applied AI</small></div>
+          <div class="stat"><b class="metal">SG</b><small>Singapore HQ</small></div>
+        </div>
+        <!-- talent stats -->
+        <div class="arm arm--talent" data-arm="talent">
+          <div class="stat"><b class="rose">3</b><small>Featured talents</small></div>
+          <div class="stat"><b class="rose">5</b><small>Core services</small></div>
+          <div class="stat"><b class="rose">10+</b><small>Years on stage</small></div>
+          <div class="stat"><b class="rose">SG · MY</b><small>Coverage</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== TECH ARM =================== -->
+  <div class="arm arm--tech on" data-arm="tech">
+    <!-- WORK -->
+    <section class="block" id="work">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div>
+            <span class="kicker">Selected Work</span>
+            <h2 style="margin-top:14px">Things we've<br>shipped. (2026)</h2>
+          </div>
+          <p>A cross-section of products engineered and delivered by JKL Global LLP — spanning consumer apps, payment platforms and AI agents.</p>
+        </div>
+        <div class="filters reveal" id="filters"></div>
+        <div class="grid" id="grid"></div>
+      </div>
     </section>
 
-
-        <section class="services">
-            <div class="container">
-                <h2 class="section-title">Our Services</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <span class="service-icon">🎤</span>
-                        <h3 class="service-title">Emcee</h3>
-                    </div>
-                    <div class="service-card">
-                        <span class="service-icon">📹</span>
-                        <h3 class="service-title">Livestreaming</h3>
-                    </div>
-                    <div class="service-card">
-                        <span class="service-icon">🎬</span>
-                        <h3 class="service-title">Acting</h3>
-                    </div>
-                    <div class="service-card">
-                        <span class="service-icon">🎵</span>
-                        <h3 class="service-title">Singing</h3>
-                    </div>
-                    <div class="service-card">
-                        <span class="service-icon">⭐</span>
-                        <h3 class="service-title">Celebrity Contents</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <h3>READY TO WORK WITH US?</h3>
-                <p style="margin-top: 15px;">Elevate your event with our exceptional talents</p>
-            </div>
-            <div class="contact-info">
-                <p>📧 info@jklentertainment.com | 📱 +65  82005226</p>
-                <p style="margin-top: 15px;">© 2025 JKL Entertainment. All rights reserved.</p>
-            </div>
+    <!-- ABOUT -->
+    <section class="block" id="about" style="background:linear-gradient(180deg,transparent,rgba(255,255,255,.015),transparent)">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div><span class="kicker">The Founder</span><h2 style="margin-top:14px">About Jeremiah.</h2></div>
         </div>
-    </footer>
+        <img class="about-banner reveal" src="about-banner.jpg" alt="Jeremiah Ng — Humanizing Digital Experiences" loading="lazy" width="904" height="482">
+        <div class="about">
+          <div class="bio reveal">
+            <p><strong>Jeremiah Ng</strong> is a serial co-founder and full-stack CTO/CIO based in Singapore, and the engineer behind JKL Global LLP's technology arm. He builds products end-to-end — architecture, backend, mobile, web and the applied-AI layer on top.</p>
+            <p>His work spans <strong>Generative AI, LLMs and RAG systems</strong>, full-stack development across Python/Django, React, React Native, Flutter and Node.js, cloud infrastructure on AWS, GCP and Azure, and blockchain. Today he runs <strong>JKL Global LLP</strong>, founded <strong>SkenPay Ltd</strong> (Hong Kong), and serves as <strong>Group CTO &amp; CIO at Aleta Planet</strong>.</p>
+            <p>Earlier chapters include <strong>SoReal Prop</strong> (acquired), <strong>Hook Tech</strong>, incubation work at <strong>Google (Viztree)</strong>, and early days at <strong>Streetsine / SRX</strong> — giving him a rare blend of startup building, enterprise delivery and hands-on engineering.</p>
+            <div class="tags-row">
+              <span class="chip">Generative AI · LLMs</span><span class="chip">Python / Django</span>
+              <span class="chip">React · React Native</span><span class="chip">Flutter</span>
+              <span class="chip">Node.js</span><span class="chip">AWS / GCP / Azure</span>
+              <span class="chip">Blockchain</span><span class="chip">Fintech · MAS / PCI / PDPA</span>
+            </div>
+          </div>
+          <div class="rolecard reveal">
+            <h4>Roles &amp; Ventures</h4>
+            <div class="role"><span class="dot"></span><div><b>Founder — JKL Global LLP</b><span>Tech &amp; Talent · Singapore</span></div></div>
+            <div class="role"><span class="dot"></span><div><b>Founder — SkenPay Ltd</b><span>Global QR payment wallet · Hong Kong · <a href="https://skenpay.com" target="_blank" rel="noopener">skenpay.com</a></span></div></div>
+            <div class="role"><span class="dot"></span><div><b>Group CTO &amp; CIO — Aleta Planet</b><span>Banking-as-a-Service platform</span></div></div>
+            <div class="role"><span class="dot"></span><div><b>Co-founder — SoReal Prop</b><span>PropTech · acquired</span></div></div>
+            <div class="role"><span class="dot"></span><div><b>Earlier — Google · Streetsine (SRX)</b><span>Incubation &amp; engineering</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="block" id="team">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div><span class="kicker">The Studio</span><h2 style="margin-top:14px">Full-stack team.</h2></div>
+          <p>A tight, senior team of full-stack engineers covering backend, mobile, frontend, AI and infrastructure under one roof.</p>
+        </div>
+        <div class="teamgrid" id="team-grid"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- =================== TALENT ARM =================== -->
+  <div class="arm arm--talent" data-arm="talent">
+    <!-- ROSTER -->
+    <section class="block" id="roster">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div>
+            <span class="kicker">Featured Talents</span>
+            <h2 style="margin-top:14px">The roster.</h2>
+          </div>
+          <p>Established performers represented by JKL Global LLP for events, campaigns, livestreams and screen work.</p>
+        </div>
+        <div class="roster">
+          <article class="talent reveal">
+            <div class="badge">Featured</div>
+            <div class="photo"><img src="komei.png" alt="Komei Foong"></div>
+            <div class="meta">
+              <h3>Komei Foong</h3>
+              <p class="role-line">Actress · Veteran Singer · Emcee &amp; Livestream Host</p>
+              <div class="links">
+                <a class="solid" href="profile.html">Profile</a>
+                <a href="digital_komei.html">Contact card</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="talent reveal">
+            <div class="photo"><img src="henry.jpeg" alt="Henry Thia"></div>
+            <div class="meta">
+              <h3>Henry Thia</h3>
+              <p class="role-line">Veteran Actor &amp; Content Creator</p>
+              <div class="links">
+                <a class="solid disabled" href="#" aria-disabled="true">Profile</a>
+                <a href="#contact">Enquire</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="talent reveal">
+            <div class="photo">🎶</div>
+            <div class="meta">
+              <h3>Olivia Torres</h3>
+              <p class="role-line">Singer &amp; Performer</p>
+              <div class="links">
+                <a class="solid disabled" href="#" aria-disabled="true">Profile</a>
+                <a href="#contact">Enquire</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="block" id="services" style="background:linear-gradient(180deg,transparent,rgba(255,111,174,.03),transparent)">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div><span class="kicker">What we offer</span><h2 style="margin-top:14px">Talent services.</h2></div>
+          <p>Book our talents for live events, brand partnerships and productions — solo or as a package.</p>
+        </div>
+        <div class="svcgrid">
+          <div class="svc reveal"><span class="ic">🎤</span><b>Emcee</b></div>
+          <div class="svc reveal"><span class="ic">📹</span><b>Livestreaming</b></div>
+          <div class="svc reveal"><span class="ic">🎬</span><b>Acting</b></div>
+          <div class="svc reveal"><span class="ic">🎵</span><b>Singing</b></div>
+          <div class="svc reveal"><span class="ic">⭐</span><b>Celebrity Content</b></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- =================== CONTACT (shared) =================== -->
+  <section class="block" id="contact">
+    <div class="wrap reveal">
+      <div class="cta-band">
+        <img src="logo.png" alt="">
+        <span class="kicker">Let's work together</span>
+        <!-- tech contact -->
+        <div class="arm arm--tech on" data-arm="tech">
+          <h2 style="margin-top:14px">Have a product in mind?</h2>
+          <p>Tell us what you're building. JKL Global LLP takes products from idea to production — web, mobile, payments and AI.</p>
+          <div class="cta">
+            <a class="btn btn-lg btn-solid" href="mailto:jeremiah@rudratech.sg">jeremiah@rudratech.sg</a>
+            <a class="btn btn-lg" href="#work">See the work</a>
+          </div>
+        </div>
+        <!-- talent contact -->
+        <div class="arm arm--talent" data-arm="talent">
+          <h2 style="margin-top:14px">Book a talent.</h2>
+          <p>Planning an event, campaign or production? Reach the JKL Global talent desk to check availability and rates.</p>
+          <div class="cta">
+            <a class="btn btn-lg btn-solid" href="mailto:info@jklentertainment.com">info@jklentertainment.com</a>
+            <a class="btn btn-lg" href="tel:+6582005226">+65 8200 5226</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <small>© <span id="yr"></span> JKL Global LLP · Singapore<br>Two disciplines — Technology &amp; Talent</small>
+    <div class="fl">
+      <a data-go="tech" href="#work">Tech</a>
+      <a data-go="talent" href="#roster">Talent</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   PROJECTS — JKL Global LLP technology portfolio.
+   Edit / add / reword freely. cat = filter category.
+   ============================================================ */
+const PROJECTS = [
+  { name:"Aleta AImatic", cat:"AI", desc:"Aleta Planet's AI automation layer for its banking-as-a-service stack. LLM-driven agents assist client onboarding and KYC review, transaction monitoring and reconciliation, and routine back-office operations — automating repetitive work and surfacing exceptions for a human to approve.", tags:["LLM Agents","BaaS Automation","KYC Review","Reconciliation"] },
+  { name:"JKL AI Agent", cat:"AI", desc:"Conversational AI agent for the JKL talent arm handling bookings, enquiries and fan engagement across web and chat.", tags:["LLM + Tools","RAG","WhatsApp / Web"] },
+  { name:"AI Chance Trader", cat:"AI", desc:"An AI-driven market-analysis and trading platform. It ingests live and historical market data and applies AI/ML models to surface signals, scoring and plain-language insights through a dashboard — turning noisy market data into actionable reads. Shipped on Railway.", tags:["Python","AI / ML Signals","Market Data","Dashboard","Railway"] },
+  { name:"Riverse AI", cat:"AI", desc:"An AI that reads and explains medical reports — upload lab results or a report and Riverse returns a plain-language summary, highlights out-of-range or notable values, and suggests questions to raise with a doctor (a comprehension aid, not a diagnosis).", tags:["LLM","Document Parsing","Healthcare","RAG"] },
+  { name:"Fynco", cat:"Fintech", desc:"A global, multi-currency virtual-banking product spanning multiple markets. The installable PWA runs a 15-screen KYC onboarding flow — personal/business branching, ID upload and live selfie verification, through to Visa card issuance — backed by a dashboard with wallet top-ups, QR scan-and-pay and eSIM plans, plus an admin ledger that reconciles every client account while users see only their own balances and transactions.", tags:["Global · Multi-currency","Visa Issuance","KYC + Liveness","QR Pay","PWA / Django"] },
+  { name:"Hooked Studio", cat:"Streaming", desc:"A short-form vertical-drama streaming app (TikTok-style player) built for Shiok Pte Ltd. Viewers browse by genre, track watch progress and unlock paid episodes from a top-up wallet; Phase 2 added a creator platform at creator.hookedstudios.com for managing series, episode paywalls and revenue. React Native (Expo) app + React web admin on a Django REST backend, with Bunny.net CDN streaming and Stripe + PayNow.", tags:["React Native (Expo)","Django REST","React Admin","Bunny.net CDN","Stripe / PayNow"] },
+  { name:"Alluora", cat:"Web & Mobile", desc:"A membership lifestyle platform delivered as a Flutter app over a dual-API backend: a WooCommerce store handles auth, products and orders, while a Django service powers content, a rewards/badge engine and an interactive quiz. Video streams through Bunny.net, with a custom admin dashboard for publishing — deployed on Railway.", tags:["Flutter","Django REST","WooCommerce","Bunny.net Stream","Railway"] },
+  { name:"Maison Lior", cat:"E-commerce", desc:"A luxury fine-jewellery e-commerce platform in Chanel/Cartier territory — Django + DRF + Postgres with shop, cart and order apps, 22 editorial products across 5 collections, Stripe + PayNow checkout and Singapore GST. The signature feature is a real-time 3D ring customiser (Three.js) with seven diamond cuts, PBR materials and HDR reflections, tucked at /design. Single-container Railway deploy.", tags:["Django + DRF","Three.js 3D Customiser","Stripe / PayNow","PostgreSQL","Railway"] },
+  { name:"Cafeteria · Face Recognition", cat:"AI", desc:"A face-recognition cafeteria platform for Hyundai Motor Singapore. Staff are identified by face at the counter or vending machine, pay from a built-in wallet and redeem meals — with integrated vending-machine dispensing and an admin layer for top-ups, redemption rules and reporting.", tags:["Computer Vision","Face Recognition","Wallet","Food Redemption","Vending Integration"] },
+  { name:"Lovelots Diamond", cat:"E-commerce", desc:"A diamond &amp; fine-jewellery e-commerce platform with a built-in dropshipping layer — onboard dropshipper clients, sync the diamond catalogue and pricing, route orders to suppliers, and manage fulfilment and logistics end-to-end, alongside the consumer storefront and secure checkout.", tags:["E-commerce","Dropshipping","Logistics","Supplier Routing"] },
+  { name:"PPZshop · Jacksmart", cat:"E-commerce", desc:"An e-commerce store for Papazao by J Team (the Jack Neo / J Team Productions initiative) — a NestJS backend driving an EJS storefront (catalogue, product pages, cart and checkout) plus a Flutter partner app for vendors.", tags:["NestJS","EJS Storefront","Flutter","Stripe"] },
+  { name:"Sanhe Loupan", cat:"Web & Mobile", desc:"Property showcase &amp; listings platform (loupan) for a developer/agency client — project galleries, unit availability, floor plans and enquiry capture, with an admin back-office for managing listings.", tags:["Property Tech","Listings","Web & Mobile"] },
+  { name:"Stickeynotes", cat:"Tools", desc:"Lightweight sticky-notes and quick-capture app with cloud sync, reminders and a local-first feel.", tags:["React","Node.js","Local-first Sync"] },
+  { name:"Business Card", cat:"Tools", desc:"Digital business-card / vCard builder with instant QR sharing and one-tap contact capture.", tags:["React","Node.js","QR · vCard"] },
+];
+
+const TEAM = [
+  { name:"Lead Full-Stack Engineer", focus:"Backend · Platform", area:"Architecture, APIs & data" },
+  { name:"Mobile Engineer", focus:"Flutter · React Native", area:"iOS & Android delivery" },
+  { name:"AI / ML Engineer", focus:"LLMs · RAG", area:"Agents & model integration" },
+  { name:"Frontend Engineer", focus:"React · Design Systems", area:"Web UI & interaction" },
+  { name:"DevOps Engineer", focus:"Cloud · CI/CD", area:"AWS / GCP, Railway, Docker" },
+  { name:"QA Engineer", focus:"Automation · Quality", area:"Testing & release safety" },
+];
+
+/* ---- render tech work grid + filters ---- */
+const grid = document.getElementById('grid');
+const filtersEl = document.getElementById('filters');
+const cats = ["All", ...Array.from(new Set(PROJECTS.map(p=>p.cat)))];
+
+function render(filter){
+  grid.innerHTML = "";
+  PROJECTS.filter(p=>filter==="All"||p.cat===filter).forEach((p,i)=>{
+    const c = document.createElement('article');
+    c.className='card reveal in';
+    c.style.transitionDelay=(i*45)+'ms';
+    c.innerHTML = `
+      <span class="cat">${p.cat}</span>
+      <span class="num">${String(i+1).padStart(2,'0')}</span>
+      <h3>${p.name}</h3>
+      <p>${p.desc}</p>
+      <div class="chips">${p.tags.map(t=>`<span class="chip">${t}</span>`).join('')}</div>`;
+    grid.appendChild(c);
+  });
+}
+cats.forEach((c,i)=>{
+  const b=document.createElement('button');
+  b.textContent=c; if(i===0)b.classList.add('on');
+  b.onclick=()=>{document.querySelectorAll('#filters button').forEach(x=>x.classList.remove('on'));b.classList.add('on');render(c);};
+  filtersEl.appendChild(b);
+});
+render("All");
+
+/* ---- render team ---- */
+const tg=document.getElementById('team-grid');
+TEAM.forEach(m=>{
+  const ini=m.name.split(' ').filter(w=>/[A-Z]/.test(w[0])).slice(0,2).map(w=>w[0]).join('')||'JKL';
+  const d=document.createElement('div');d.className='tcard reveal';
+  d.innerHTML=`<div class="avatar">${ini}</div><div><b>${m.name}</b><small>${m.focus}</small><em>${m.area}</em></div>`;
+  tg.appendChild(d);
+});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* ---- arm toggle: Tech <-> Talent ---- */
+const KICKERS = {
+  tech:"JKL Global LLP · Technology",
+  talent:"JKL Global LLP · Talent"
+};
+function setArm(arm){
+  if(arm!=="tech"&&arm!=="talent") arm="tech";
+  document.body.dataset.arm = arm;
+  document.querySelectorAll('.arm').forEach(el=>{
+    el.classList.toggle('on', el.dataset.arm===arm);
+  });
+  // nav links per arm
+  document.querySelectorAll('.arm-link--tech').forEach(a=>a.style.display = arm==="tech"?"":"none");
+  document.querySelectorAll('.arm-link--talent').forEach(a=>a.style.display = arm==="talent"?"":"none");
+  // toggle button aria state
+  document.querySelectorAll('.toggle button').forEach(b=>{
+    b.setAttribute('aria-selected', String(b.dataset.go===arm));
+  });
+  document.getElementById('hero-kicker').textContent = KICKERS[arm];
+  if(history.replaceState) history.replaceState(null,"","#"+arm);
+}
+// wire every toggle button + footer arm links
+document.querySelectorAll('[data-go]').forEach(el=>{
+  el.addEventListener('click', e=>{
+    const go = el.dataset.go;
+    // footer links also jump to a section; let the anchor work, just switch arm first
+    setArm(go);
+  });
+});
+// deep-link: #talent / #tech (and land on the right arm if a talent/tech section is linked)
+const TALENT_HASHES = new Set(["#talent","#roster","#services"]);
+setArm(TALENT_HASHES.has(location.hash) ? "talent" : "tech");
+
+/* ---- scroll reveal ---- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
