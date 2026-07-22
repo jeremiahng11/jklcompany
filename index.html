@@ -114,7 +114,6 @@
   .btn{font-family:var(--mono);font-size:12px;letter-spacing:.06em;border:1px solid var(--line-2);
     padding:9px 16px;border-radius:999px;color:var(--ink);transition:.25s;background:rgba(255,255,255,.02);cursor:pointer}
   .btn:hover{background:var(--ink);color:#000;border-color:var(--ink)}
-  .menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:7px 10px;font-family:var(--mono);cursor:pointer}
 
   /* ---- arm toggle (the 2 T's) ---- */
   .toggle{display:inline-flex;padding:5px;gap:4px;border:1px solid var(--line-2);border-radius:999px;
@@ -289,16 +288,17 @@
   }
   @media(max-width:640px){
     .navlinks{display:none}
-    .menu-btn{display:none}
-    .brand span{display:none}
+    .brand span,.brand b{display:none}
     .grid,.teamgrid,.roster{grid-template-columns:1fr}
     .stats .wrap{grid-template-columns:1fr 1fr}
     .hero{padding:64px 0 44px}
     .cta-band{padding:48px 22px}
     section.block{padding:66px 0}
-    nav{gap:10px}
-    .nav-toggle{margin-left:auto;margin-right:0}
-    .toggle button{padding:8px 13px;font-size:11px}
+    nav{gap:8px;padding:0 16px;height:60px}
+    .nav-toggle{margin:0}
+    .toggle{padding:4px;gap:2px}
+    .toggle button{padding:7px 12px;font-size:10.5px;gap:6px}
+    .toggle button .d{width:5px;height:5px}
   }
 </style>
 </head>
@@ -378,8 +378,8 @@
       <p class="kicker" style="margin-top:34px;margin-bottom:10px">Two disciplines · one standard</p>
       <div class="toggle hero-toggle" aria-hidden="true">
         <span class="thumb"></span>
-        <button data-go="tech"><span class="d"></span>Tech</button>
-        <button data-go="talent"><span class="d"></span>Talent</button>
+        <button data-go="tech" tabindex="-1"><span class="d"></span>Tech</button>
+        <button data-go="talent" tabindex="-1"><span class="d"></span>Talent</button>
       </div>
     </div>
 
